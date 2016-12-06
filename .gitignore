@@ -1,0 +1,6 @@
+.hg
+.hgignore
+.hgignore.bak
+.RData
+.Rhistory
+.Rproj.user
