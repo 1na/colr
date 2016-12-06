@@ -24,7 +24,7 @@ Select columns (or rows) by PERL regular expression. See \link[base]{regex}\{bas
 regex documenation. Regex is a very powerful grammar to match strings.
 }
 \examples{
- cgrep(x, "^.+$") # matches all columns that have non-empty column names and thus drops all columns with empty names
+ cgrep(iris, "^.+$") # matches all columns that have non-empty column names and thus drops all columns with empty names
 
  cgrep(iris, "^Petal\\\\.") # matches all columns that have  names starting with the string "Petal."
  cgrep(iris, "\\\\.") # columns with names that contain a dot
