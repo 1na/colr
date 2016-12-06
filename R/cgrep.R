@@ -25,7 +25,8 @@
 #'  a single column or row is selected R will flatten the results to a vector.
 #'
 #' @examples
-#'  cgrep(iris, "^.+$") # matches all columns that have non-empty column names and thus drops all columns with empty names
+#'  cgrep(iris, "^.+$") # matches all columns that have non-empty column names and thus
+#'  #drops all columns with empty names
 #'
 #'  cgrep(iris, "^Petal\\.") # matches all columns that have  names starting with the string "Petal."
 #'  cgrep(iris, "\\.") # columns with names that contain a dot
