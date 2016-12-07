@@ -45,10 +45,9 @@ is a very powerful grammar to match strings
 
 
 ```{r}
-library(magrittr)
 library(colr)
-iris %>% head
-iris %>% cgrep("^Petal\\.") %>% head # matches all columns that have  names starting with the string "Petal."
+head(iris)
+head(cgrep(iris,"^Petal\\."))  # matches all columns that have  names starting with the string "Petal."
 ```
 
 ## csub
