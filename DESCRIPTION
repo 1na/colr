@@ -12,7 +12,7 @@ Depends: R (>= 3.0.0)
 License: GPL (>= 2)
 LazyData: TRUE
 RoxygenNote: 5.0.1
-Suggests: knitr, rmarkdown, colr
+Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
 NeedsCompilation: no
 Packaged: 2017-01-02 12:04:03 UTC; ks11008
