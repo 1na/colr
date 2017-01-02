@@ -1,6 +1,6 @@
 ---
 title: "Package colr"
-author: "1na"
+author: "Louis Chaillet"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
