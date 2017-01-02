@@ -10,9 +10,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="Louis Chaillet" />
+<meta name="author" content="1na" />
 
-<meta name="date" content="2016-12-06" />
+<meta name="date" content="2017-01-02" />
 
 <title>Package colr</title>
 
@@ -69,8 +69,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 <h1 class="title toc-ignore">Package colr</h1>
-<h4 class="author"><em>Louis Chaillet</em></h4>
-<h4 class="date"><em>2016-12-06</em></h4>
+<h4 class="author"><em>1na</em></h4>
+<h4 class="date"><em>2017-01-02</em></h4>
 
 
 
@@ -79,7 +79,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Package colr supplies functions that deal with column names. It puts the power of regex at the disposal of the user. Regex is an extremely powerful domain specific language (dsl) to deal with the selection and substitution of strings and is therefore very suited to deal with column names. R has a full distribution of the Perl regex engine in the base package, and that is therefore at the disposal of any user. This vignette will explain the use of both the package and basic regex. Regex is a rich and complex dsl and the this vignette is not the right place to go into great detail, I will point you to other sources where appropriate.</p>
 <div id="use" class="section level2">
 <h2>Use</h2>
-<p>Use the package with <code>library(colr)</code> or use the functions with <code>colr::funcname</code> (for example <code>colr::cgrep</code>).</p>
+<p>Use the package with or use the functions with <code>colr::funcname</code> (for example <code>colr::cgrep</code>).</p>
 </div>
 </div>
 <div id="functions" class="section level1">
@@ -109,9 +109,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>cgrep(x, &quot;^.+$&quot;)</code> # matches all columns that have non-empty column names and thus drops all columns with empty names</p>
 <p><code>cgrep(iris, &quot;^Petal\\\\.&quot;)</code> # matches all columns that have names starting with the string “Petal.”</p>
 <p><code>cgrep(iris, &quot;\\\\.&quot;)</code> # columns with names that contain a dot</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(magrittr)
-<span class="kw">library</span>(colr)
-iris %&gt;%<span class="st"> </span>head</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(iris)</code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -119,7 +117,7 @@ iris %&gt;%<span class="st"> </span>head</code></pre></div>
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">iris %&gt;%<span class="st"> </span><span class="kw">cgrep</span>(<span class="st">&quot;^Petal</span><span class="ch">\\</span><span class="st">.&quot;</span>) %&gt;%<span class="st"> </span>head <span class="co"># matches all columns that have  names starting with the string &quot;Petal.&quot;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(colr::<span class="kw">cgrep</span>(iris,<span class="st">&quot;^Petal</span><span class="ch">\\</span><span class="st">.&quot;</span>))  <span class="co"># matches all columns that have  names starting with the string &quot;Petal.&quot;</span></code></pre></div>
 <pre><code>##   Petal.Length Petal.Width
 ## 1          1.4         0.2
 ## 2          1.4         0.2
@@ -297,13 +295,13 @@ iris %&gt;%<span class="st"> </span>head</code></pre></div>
 <div id="elaborate-example" class="section level1">
 <h1>Elaborate example</h1>
 <p>A more elaborate example will be useful to understand the power of regex substitution of column names. A data set is provided in the package under the name <code>colrdata</code>. <code>colrdata</code> has column names with messy notation of dates.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">colrdata</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">colr::colrdata</code></pre></div>
 <pre><code>##   01-31-1955 02-15-1980 06/02/1999 02 14 01 03 03-2016
 ## 1          7         15          5       11          1
 ## 2          2         13          9       14         10
 ## 3          4         12          3        6          8</code></pre>
 <p>Say you want to clean this up and at the same time move from American custom (put months first) to European (days first). One call to csub can do this for you as such <code>csub(colrdata, &quot;^([01]?\\d)[/ \\-]([123]?\\d)[/ \\-]((?:(?:19)|(?:20))?\\d{2})$&quot;,&quot;\\2-\\1-\\3&quot;)</code>. The result looks like this, I will shortly explain why the pattern looks like that.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">csub</span>(colrdata, <span class="st">&quot;^([01]?</span><span class="ch">\\</span><span class="st">d)[/ </span><span class="ch">\\</span><span class="st">-]([0123]?</span><span class="ch">\\</span><span class="st">d)[/ </span><span class="ch">\\</span><span class="st">-](?:(?:19)|(?:20))?(</span><span class="ch">\\</span><span class="st">d{2})$&quot;</span>,<span class="st">&quot;</span><span class="ch">\\</span><span class="st">2-</span><span class="ch">\\</span><span class="st">1-</span><span class="ch">\\</span><span class="st">3&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">colr::<span class="kw">csub</span>(colr::colrdata, <span class="st">&quot;^([01]?</span><span class="ch">\\</span><span class="st">d)[/ </span><span class="ch">\\</span><span class="st">-]([0123]?</span><span class="ch">\\</span><span class="st">d)[/ </span><span class="ch">\\</span><span class="st">-](?:(?:19)|(?:20))?(</span><span class="ch">\\</span><span class="st">d{2})$&quot;</span>,<span class="st">&quot;</span><span class="ch">\\</span><span class="st">2-</span><span class="ch">\\</span><span class="st">1-</span><span class="ch">\\</span><span class="st">3&quot;</span>)</code></pre></div>
 <pre><code>##   31-01-55 15-02-80 02-06-99 14-02-01 03-03-16
 ## 1        7       15        5       11        1
 ## 2        2       13        9       14       10
