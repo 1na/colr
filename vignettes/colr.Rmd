@@ -11,11 +11,12 @@ vignette: >
 
 ---
 
+
 #Package
 Package colr supplies functions that deal with column names. It puts the power of regex at the disposal of the user. Regex is an extremely powerful domain specific language (dsl) to deal with the selection and substitution of strings and is therefore very suited to deal with column names. R has a full distribution of the Perl regex engine in the base package, and that is therefore at the disposal of any user. This vignette will explain the use of both the package and basic regex. Regex is a rich and complex dsl and the this vignette is not the right place to go into great detail, I will point you to other sources where appropriate. 
 
 ##Use 
-Use the package with `library(colr)` or use the functions with `colr::funcname` (for example `colr::cgrep`).
+Use the package with  or use the functions with `colr::funcname` (for example `colr::cgrep`).
 
 #Functions
 Package colr provides several functions all based on the R functions associated with regex. The functions are `cgrep` and `csub`. `cgrep` selects all columns where the string matches the column names, `csub` changes the column names according to the replacement.
@@ -45,9 +46,8 @@ is a very powerful grammar to match strings
 
 
 ```{r}
-library(colr)
 head(iris)
-head(cgrep(iris,"^Petal\\."))  # matches all columns that have  names starting with the string "Petal."
+head(colr::cgrep(iris,"^Petal\\."))  # matches all columns that have  names starting with the string "Petal."
 ```
 
 ## csub
@@ -138,12 +138,12 @@ To test the validity of the regex pattern you can use this webstite: <a href="ht
 #Elaborate example
 A more elaborate example will be useful to understand the power of regex substitution of column names. A data set is provided in the package under the name `colrdata`. `colrdata` has column names with messy notation of dates. 
 ```{r data}
-colrdata
+colr::colrdata
 ```
 Say you want to clean this up and at the same time move from American custom (put months first) to European (days first). One call to csub can do this for you as such `csub(colrdata, "^([01]?\\d)[/ \\-]([123]?\\d)[/ \\-]((?:(?:19)|(?:20))?\\d{2})$","\\2-\\1-\\3")`. The result looks like this, I will shortly explain why the pattern looks like that.
 
 ```{r csub}
-csub(colrdata, "^([01]?\\d)[/ \\-]([0123]?\\d)[/ \\-](?:(?:19)|(?:20))?(\\d{2})$","\\2-\\1-\\3")
+colr::csub(colr::colrdata, "^([01]?\\d)[/ \\-]([0123]?\\d)[/ \\-](?:(?:19)|(?:20))?(\\d{2})$","\\2-\\1-\\3")
 ```
 
 So how does that work? It states match from the beginning of the string `^` a zero or one `[01]`, that may occur `?`, followed by one digit `\\d` and if found capture it in special variable 1. Next there must be on of `/- ` followed by either a zero, a one, two or three `[0123]?` and a digit, again followed by one of `/- `, and capture the digits. Lastly look for either `19` or `20` but do not capture these alone, next there must be two digits and capture all the digits.

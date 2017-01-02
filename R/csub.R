@@ -19,8 +19,8 @@
 #' @seealso \link[base]{regex}\{base\}
 #'
 #' @examples
-#' csub(iris, "\\.", "-") # will change all dots in column names in "-"
-#' csub(iris, "[pP]etal", "Beetle")
+#' head(csub(iris, "\\.", "-")) # will change all dots in column names in "-"
+#' head(csub(iris, "[pP]etal", "Beetle"))
 #'
 #' # a more complex example showing the power of regex
 #'
@@ -58,32 +58,3 @@ csub <- function(x,pattern,replacement,dim = c("c", "r"),gl=TRUE){
   }
   x
 }
-
-# dsub <- function(x,pattern,replacement,dim = c("c", "r"),gl=TRUE){
-#   # gl <- match.arg(gl)
-#   if (!(is.logical(gl))) {stop("gl must be one off TRUE or FALSE", call. = TRUE)}
-#   dim <- match.arg(dim)
-#   if (gl == T) { myf <- gsub } else {myf <- sub}
-#   if (is.list(x)){
-#     if (is.data.frame(x) && dim == "r") {
-#       row.names(x) <- myf(pattern, replacement, row.names(x), perl = TRUE)
-#     }
-#     else
-#     {
-#       names(x) <- myf(pattern, replacement, names(x), perl = TRUE)
-#     }
-#   } else {
-#     if (is.null(dim(x))) {
-#       names(x) <- myf(pattern, replacement, names(x), perl = TRUE)
-#     }
-#     else {
-#       if (dim == "c")
-#       {
-#         colnames(x) <- myf(pattern, replacement, colnames(x), perl = TRUE)
-#       } else {
-#         row.names(x) <- myf(pattern, replacement, row.names(x), perl = TRUE)
-#       }
-#     }
-#   }
-#   x
-# }

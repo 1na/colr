@@ -32,8 +32,8 @@ For lists the function acts on the highest level of the list and this is irrespe
 csub, a function to change column names
 }
 \examples{
-csub(iris, "\\\\.", "-") # will change all dots in column names in "-"
-csub(iris, "[pP]etal", "Beetle")
+head(csub(iris, "\\\\.", "-")) # will change all dots in column names in "-"
+head(csub(iris, "[pP]etal", "Beetle"))
 
 # a more complex example showing the power of regex
 
