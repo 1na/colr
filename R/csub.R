@@ -1,4 +1,4 @@
-#' csub, a function to change column names
+#' a function to change column names
 #'
 #' @param x A dataframe, list or matrix with column names
 #' @param pattern A string
@@ -8,7 +8,7 @@
 #' @param gl A boolean, if TRUE (the default) all occurences in the input strings (row or column names) are replaced,
 #' if FALSE only the first occurence in every string is replaced.
 #'
-#' @return A dataframe, list or matrix where the columns or rows are renamed based on the Regex substitution
+#' @return A dataframe, list or matrix where the columns or rows are renamed based on the 'Regex' substitution
 #' defined in the pattern and the replacement. By default column are renamed, unless the dim parameter specifies
 #' "r" for rows.
 #' The default is to use gsub (replacing all occurences of pattern in each column name), to replace only the first
@@ -22,7 +22,7 @@
 #' head(csub(iris, "\\.", "-")) # will change all dots in column names in "-"
 #' head(csub(iris, "[pP]etal", "Beetle"))
 #'
-#' # a more complex example showing the power of regex
+#' # a more complex example showing the power of 'regex'
 #'
 #' head(csub(data.frame(WorldPhones),"^([NM](?:\\w{2})?\\.)Amer", "\\1America"))
 #'

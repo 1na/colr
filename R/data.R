@@ -1,4 +1,4 @@
-#' Dummy data for demonstration of the capacities of rcol
+#' Dummy data for demonstration of the capacities of 'rcol'
 #'
 #' A dataset containing with columns with malformed dates.
 #'

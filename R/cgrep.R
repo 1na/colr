@@ -1,4 +1,4 @@
-# colr package does only one thing but it does it very well
+# The 'colr' package does only one thing but it does it very well
 # You can learn more about package authoring with RStudio at:
 #
 #   http://r-pkgs.had.co.nz/
@@ -9,10 +9,10 @@
 #   Check Package:             'Ctrl + Shift + E'
 #   Test Package:              'Ctrl + Shift + T'
 
-#' cgrep, a function to select columns by regex
+#' a function to select columns by 'regex'
 #'
-#' @description Select columns (or rows) by PERL regular expression. See \link[base]{regex}\{base\} for
-#' regex documenation. Regex is a very powerful grammar to match strings.
+#' @description Select columns (or rows) by 'perl' regular expression. See \link[base]{regex}\{base\} for
+#' 'regex' documenation. 'regex' is a very powerful grammar to match strings.
 #'
 #' @seealso \link[base]{regex}\{base\}
 #'
@@ -22,7 +22,7 @@
 #' parameter has no meaning
 #' @return  A Dataframe, list or matrix where the column- or row names match the pattern. By default the
 #' selecion is by column, unless the dim parameter specifies "r" for rows. If f x is not a dataframe and if
-#'  a single column or row is selected R will flatten the results to a vector.
+#'  a single column or row is selected 'R' will flatten the results to a vector.
 #'
 #' @examples
 #'  head(cgrep(iris, "^.+$")) # matches all columns that have non-empty column names and thus

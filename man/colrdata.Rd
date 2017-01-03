@@ -3,7 +3,7 @@
 \docType{data}
 \name{colrdata}
 \alias{colrdata}
-\title{Dummy data for demonstration of the capacities of rcol}
+\title{Dummy data for demonstration of the capacities of 'rcol'}
 \format{A data frame with 3 rows and 5 variables:
 \describe{
   \item{01-31-1955}{dummy}

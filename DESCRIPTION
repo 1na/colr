@@ -1,13 +1,13 @@
 Package: colr
 Type: Package
-Title: Colr Handles Columns by Full Regex
+Title: Functions to Select and Rename Data
 Version: 0.1.900
-Date: 2016-09-01
+Date: 2017-01-03
 Author: Louis Chaillet <commerce.chaillet@gmail.com>
 Maintainer: Louis Chaillet <commerce.chaillet@gmail.com>
-Description: Handle columns in dataframes, lists and numeric types by PERL regular expression.
- Regex is a very powerful grammar to match strings, such as column names. Selecting and renaming
- columns are very common operations and it is useful to have powerful functions for this.
+Description: Powerful functions to select and rename columns in dataframes, lists and numeric types 
+  by 'Perl' regular expression. Regular expression ('regex') are a very powerful grammar to match 
+  strings, such as column names. 
 Depends: R (>= 3.0.0)
 License: GPL (>= 2)
 LazyData: TRUE

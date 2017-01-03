@@ -2,7 +2,7 @@
 % Please edit documentation in R/cgrep.R
 \name{cgrep}
 \alias{cgrep}
-\title{cgrep, a function to select columns by regex}
+\title{a function to select columns by 'regex'}
 \usage{
 cgrep(x, pattern, dim = c("c", "r"))
 }
@@ -17,11 +17,11 @@ parameter has no meaning}
 \value{
 A Dataframe, list or matrix where the column- or row names match the pattern. By default the
 selecion is by column, unless the dim parameter specifies "r" for rows. If f x is not a dataframe and if
- a single column or row is selected R will flatten the results to a vector.
+ a single column or row is selected 'R' will flatten the results to a vector.
 }
 \description{
-Select columns (or rows) by PERL regular expression. See \link[base]{regex}\{base\} for
-regex documenation. Regex is a very powerful grammar to match strings.
+Select columns (or rows) by 'perl' regular expression. See \link[base]{regex}\{base\} for
+'regex' documenation. 'regex' is a very powerful grammar to match strings.
 }
 \examples{
  head(cgrep(iris, "^.+$")) # matches all columns that have non-empty column names and thus
